@@ -92,6 +92,7 @@ class BB_VisualProperties(bpy.types.PropertyGroup):
         items=[
             ('COSMIC_BLOSSOM', "Cosmic Blossom", "Multilayered alien cosmic flower organism with energy wave propagation and reflective temple environment"),
             ('INFINITE_BLACK_HOLE_TUNNEL', "Infinite Black Hole Tunnel", "Gigantic mechanical corridor with amber LED pulse rings leading to a black hole"),
+            ('INFINITE_LIGHT_GRID', "Infinite Light Grid", "Deep square-framed LED tunnel with mechanical joints and audio-reactive light propagation"),
             ('QUANTUM_FIELD', "Quantum Field", "High-density organic particle waves (Eduard OV style)"),
             ('AUDIO_SPHERE', "Audio Sphere", "Radial bars on an icosphere"),
         ],
@@ -254,6 +255,32 @@ class BB_VisualProperties(bpy.types.PropertyGroup):
         name="Mirror Platform",
         description="Enable reflective temple water/obsidian platform below blossom",
         default=True,
+    )
+
+    # ── Infinite Light Grid Parameters ──────────────────────────────────
+    grid_frame_count: IntProperty(
+        name="Grid Frames",
+        description="Number of square frames in the tunnel corridor",
+        default=35,
+        min=10,
+        max=80,
+    )
+
+    grid_frame_size: FloatProperty(
+        name="Frame Size",
+        description="Side length of each square frame in meters",
+        default=3.0,
+        min=1.0,
+        max=8.0,
+    )
+
+    grid_twist_amount: FloatProperty(
+        name="Twist Per Frame",
+        description="Z-rotation increment per frame (creates spiral perspective)",
+        default=0.05,
+        min=0.0,
+        max=0.3,
+        subtype='FACTOR',
     )
 
     variation: FloatProperty(

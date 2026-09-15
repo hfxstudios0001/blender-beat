@@ -137,6 +137,10 @@ def generate_visualizer(
                 "blossom_shard_count": getattr(bb_vis, "blossom_shard_count", 45),
                 "blossom_color_palette": getattr(bb_vis, "blossom_color_palette", 'CELESTIAL_GOLD'),
                 "blossom_water_reflections": getattr(bb_vis, "blossom_water_reflections", True),
+                # Infinite Light Grid Settings
+                "grid_frame_count": getattr(bb_vis, "grid_frame_count", 35),
+                "grid_frame_size": getattr(bb_vis, "grid_frame_size", 3.0),
+                "grid_twist_amount": getattr(bb_vis, "grid_twist_amount", 0.05),
             }
             preset_objects = modular_preset.create(bpy.context, analysis, preset_settings)
             

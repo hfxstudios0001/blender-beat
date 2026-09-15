@@ -195,6 +195,7 @@ class BB_OT_GenerateVisual(bpy.types.Operator):
         preset_map = {
             'COSMIC_BLOSSOM': "Cosmic Blossom",
             'INFINITE_BLACK_HOLE_TUNNEL': "Infinite Black Hole Tunnel",
+            'INFINITE_LIGHT_GRID': "Infinite Light Grid",
             'AUDIO_SPHERE': "Audio Sphere",
             'QUANTUM_FIELD': "Quantum Field",
         }

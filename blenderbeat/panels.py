@@ -139,6 +139,20 @@ class BB_PT_VisualPanel(bpy.types.Panel):
             box_geo.prop(visual, "tunnel_ring_count", text="Rings")
             box_geo.prop(visual, "tunnel_radius", text="Radius")
             box_geo.prop(visual, "tunnel_enable_debris", text="Floating Debris")
+        elif visual.preset == 'INFINITE_LIGHT_GRID':
+            box = layout.box()
+            box.label(text="Aura Sync Lighting", icon='LIGHT_SUN')
+            box.prop(visual, "tunnel_color_mode", text="Mode")
+            if visual.tunnel_color_mode == 'CUSTOM':
+                box.prop(visual, "tunnel_custom_color", text="Color")
+            box.prop(visual, "tunnel_glow_min", text="Resting Opacity", slider=True)
+            box.prop(visual, "tunnel_glow_max", text="Peak Glow")
+
+            box_geo = layout.box()
+            box_geo.label(text="Grid Architecture", icon='MESH_GRID')
+            box_geo.prop(visual, "grid_frame_count", text="Frames")
+            box_geo.prop(visual, "grid_frame_size", text="Frame Size")
+            box_geo.prop(visual, "grid_twist_amount", text="Twist", slider=True)
         elif visual.preset == 'AUDIO_SPHERE':
             col = layout.column(align=True)
             col.prop(visual, "sphere_radius", text="Radius")

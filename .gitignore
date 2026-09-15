@@ -30,8 +30,6 @@ Desktop.ini
 debug_info.json
 
 # Agent context (internal dev docs)
-AGENTS.md
-PROJECT_CONTEXT.md
 .agents/
 
 # Test audio files
