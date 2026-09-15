@@ -1,0 +1,1 @@
+# BlenderBeat — Visual generation modules

@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# BlenderBeat caches
+*.blenderbeat_cache.json
+
+# Blender
+*.blend1
+*.blend2
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test / debug scripts (keep in repo but ignore generated outputs)
+debug_info.json
+
+# Agent context (internal dev docs)
+AGENTS.md
+PROJECT_CONTEXT.md
+.agents/
+
+# Test audio files
+test_beat.mp3
+test_beat.wav
+test_export.mp3
+
+# Test & debug renders (screenshots kept in docs/ for README)
+test_*.png
+infinite_tunnel_*.png
+live_*.png
+polyfjord_*.png
+quantum_field_*.png
+viewport_*.png
+verify_*.png
+render_*.png
+
+# Test / debug scripts at root level
+check_live_state.py
+clean_test_obj.py
+find_peak_frames.py
+inspect_action.py
+inspect_gn_inputs.py
+inspect_gn_mod.py
+inspect_petals.py
+launch_blender_gui.py
+live_control_blender.py
+render_check.py
+run_addon_test.py
+set_cinematic_view.py
+setup_viewport.py
+test_*.py
