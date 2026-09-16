@@ -113,14 +113,7 @@ class BB_PT_VisualPanel(bpy.types.Panel):
         layout.separator()
 
         # Preset-specific controls
-        if visual.preset == 'SIGNAL_DRIFT':
-            box = layout.box()
-            box.label(text="Digital Apparition — Spectral Face", icon='USER')
-            box.label(text="Target: Authentic Human Face / Bust (Zero Lag)", icon='CHECKMARK')
-            box.label(text="System: Micro Dots + Z-Aligned Scan Bars", icon='NODETREE')
-            box.label(text="Shader: Violet (-X) to Cyan (+X) CRT Scan", icon='MATERIAL')
-            box.label(text="Reactivity: Kick Radial Burst & Zoom Punch", icon='DRIVER')
-        elif visual.preset == 'COSMIC_BLOSSOM':
+        if visual.preset == 'COSMIC_BLOSSOM':
             box = layout.box()
             box.label(text="Hero Flower Architecture", icon='OUTLINER_OB_CURVES')
             box.prop(visual, "blossom_color_palette", text="Theme")

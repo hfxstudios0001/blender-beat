@@ -90,14 +90,13 @@ class BB_VisualProperties(bpy.types.PropertyGroup):
         name="Preset",
         description="Visual preset to use",
         items=[
-            ('SIGNAL_DRIFT', "Signal Drift (Digital Apparition)", "Spectral human apparition dissolving into glowing light fragments, micro particles, and audio-reactive streaks"),
             ('COSMIC_BLOSSOM', "Cosmic Blossom", "Multilayered alien cosmic flower organism with energy wave propagation and reflective temple environment"),
             ('INFINITE_BLACK_HOLE_TUNNEL', "Infinite Black Hole Tunnel", "Gigantic mechanical corridor with amber LED pulse rings leading to a black hole"),
             ('INFINITE_LIGHT_GRID', "Infinite Light Grid", "Deep square-framed LED tunnel with mechanical joints and audio-reactive light propagation"),
             ('QUANTUM_FIELD', "Quantum Field", "High-density organic particle waves (Eduard OV style)"),
             ('AUDIO_SPHERE', "Audio Sphere", "Radial bars on an icosphere"),
         ],
-        default='SIGNAL_DRIFT',
+        default='COSMIC_BLOSSOM',
     )
 
     complexity: FloatProperty(

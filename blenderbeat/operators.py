@@ -193,14 +193,13 @@ class BB_OT_GenerateVisual(bpy.types.Operator):
 
         # Map preset enum to name
         preset_map = {
-            'SIGNAL_DRIFT': "Signal Drift",
             'COSMIC_BLOSSOM': "Cosmic Blossom",
             'INFINITE_BLACK_HOLE_TUNNEL': "Infinite Black Hole Tunnel",
             'INFINITE_LIGHT_GRID': "Infinite Light Grid",
             'AUDIO_SPHERE': "Audio Sphere",
             'QUANTUM_FIELD': "Quantum Field",
         }
-        preset_name = preset_map.get(visual.preset, "Signal Drift")
+        preset_name = preset_map.get(visual.preset, "Cosmic Blossom")
 
         # Determine BPM
         bpm = audio.bpm_override if audio.bpm_override > 0 else audio.detected_bpm
