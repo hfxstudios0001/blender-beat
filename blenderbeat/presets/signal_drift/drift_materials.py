@@ -18,8 +18,8 @@ import bpy
 
 def create_signal_drift_material(
     name: str = "BB_Mat_SignalDrift",
-    min_glow: float = 3.0,
-    peak_emission: float = 90.0,
+    min_glow: float = 1.2,
+    peak_emission: float = 32.0,
     scan_line_density: float = 80.0,
     scan_line_strength: float = 0.45,
 ) -> bpy.types.Material:
@@ -125,11 +125,11 @@ def create_signal_drift_material(
     links.new(scan_mask.outputs['Value'], final_factor.inputs[1])
 
     # ── Dual-Tone Color Palette (Violet to Cyan) ──────────────────────
-    # Position X mapped from [-0.3, 0.3] -> [0, 1]
+    # Position X mapped across head width: [-0.16, 0.16] -> [0, 1]
     x_remap = nodes.new('ShaderNodeMapRange')
     x_remap.location = (-750, -200)
-    x_remap.inputs['From Min'].default_value = -0.35
-    x_remap.inputs['From Max'].default_value = 0.35
+    x_remap.inputs['From Min'].default_value = -0.16
+    x_remap.inputs['From Max'].default_value = 0.16
     x_remap.inputs['To Min'].default_value = 0.0
     x_remap.inputs['To Max'].default_value = 1.0
     links.new(sep_pos.outputs['X'], x_remap.inputs['Value'])

@@ -33,6 +33,7 @@ def create_drift_geometry_nodes(
     density_max_bars: float = 12000.0,
     streak_count: int = 300,
     ghost_copies: int = 3,
+    center_z: float = 0.0,
 ) -> bpy.types.NodeTree:
     """
     Construct the precision Geometry Nodes system for Signal Drift.
@@ -98,7 +99,7 @@ def create_drift_geometry_nodes(
     center_val.location = (-1400, 1100)
     center_val.inputs['X'].default_value = 0.0
     center_val.inputs['Y'].default_value = 0.0
-    center_val.inputs['Z'].default_value = 1.0
+    center_val.inputs['Z'].default_value = float(center_z)
 
     # ══════════════════════════════════════════════════════════════════
     # LAYER 1: MICRO PARTICLES (Silhouette Definition via Poisson Disk)

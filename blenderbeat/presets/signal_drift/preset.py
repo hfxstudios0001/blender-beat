@@ -113,19 +113,23 @@ class SignalDriftPreset(BasePreset):
         col = self.get_collection()
 
         # ── 1. Configuration ──────────────────────────────────────────
-        human_height = settings.get("human_height", 1.80)
-        poisson_dist_micro = settings.get("poisson_dist_micro", 0.0055)
-        density_max_micro = settings.get("density_max_micro", 45000.0)
-        poisson_dist_bars = settings.get("poisson_dist_bars", 0.015)
-        density_max_bars = settings.get("density_max_bars", 12000.0)
-        streak_count = settings.get("streak_count", 300)
-        ghost_copies = settings.get("ghost_copies", 3)
+        head_only = settings.get("head_only", True)
+        human_height = settings.get("human_height", 0.60 if head_only else 1.80)
+        
+        # Sampling optimized for high framerate and zero viewport lag:
+        # Head only requires ~18k-22k points total instead of 60k+ full body points
+        poisson_dist_micro = settings.get("poisson_dist_micro", 0.0038 if head_only else 0.0055)
+        density_max_micro = settings.get("density_max_micro", 32000.0 if head_only else 45000.0)
+        poisson_dist_bars = settings.get("poisson_dist_bars", 0.009 if head_only else 0.015)
+        density_max_bars = settings.get("density_max_bars", 8000.0 if head_only else 12000.0)
+        streak_count = settings.get("streak_count", 150 if head_only else 300)
+        ghost_copies = settings.get("ghost_copies", 2 if head_only else 3)
         total_frames = settings.get("total_frames", 446)
 
         # ── 2. Material ───────────────────────────────────────────────
-        min_glow = settings.get("min_glow", 4.0)
-        peak_emission = settings.get("peak_emission", 45.0)
-        scan_density = settings.get("scan_line_density", 60.0)
+        min_glow = settings.get("min_glow", 1.2)
+        peak_emission = settings.get("peak_emission", 32.0)
+        scan_density = settings.get("scan_line_density", 85.0 if head_only else 60.0)
         scan_strength = settings.get("scan_line_strength", 0.35)
 
         mat_drift = create_signal_drift_material(
@@ -136,10 +140,11 @@ class SignalDriftPreset(BasePreset):
             scan_line_strength=scan_strength,
         )
 
-        # ── 3. Authentic Human Source Mesh ────────────────────────────
+        # ── 3. Authentic Human Face Source Mesh ───────────────────────
         mannequin = create_mannequin_mesh(
             name="BB_SD_Mannequin",
             total_height=human_height,
+            head_only=head_only,
         )
         if mannequin.name not in col.objects:
             col.objects.link(mannequin)
@@ -162,17 +167,19 @@ class SignalDriftPreset(BasePreset):
             density_max_bars=density_max_bars,
             streak_count=streak_count,
             ghost_copies=ghost_copies,
+            center_z=0.0 if head_only else 1.0,
         )
 
         # ── 6. Drivers ───────────────────────────────────────────────
         self._setup_drift_drivers(viz_obj, node_tree, mat_drift)
 
-        # ── 7. Camera ────────────────────────────────────────────────
+        # ── 7. Camera (Framed specifically for Face Portrait) ───────────
         cam = setup_drift_camera(
-            orbit_radius=settings.get("orbit_radius", 3.0),
-            orbit_height=settings.get("orbit_height", 1.0),
+            orbit_radius=settings.get("orbit_radius", 0.75 if head_only else 3.0),
+            orbit_height=settings.get("orbit_height", 0.02 if head_only else 1.0),
             total_frames=total_frames,
-            lens_mm=settings.get("lens_mm", 38.0),
+            lens_mm=settings.get("lens_mm", 70.0 if head_only else 38.0),
+            target_z=0.0 if head_only else 1.0,
             collection=col,
         )
 

@@ -115,9 +115,9 @@ class BB_PT_VisualPanel(bpy.types.Panel):
         # Preset-specific controls
         if visual.preset == 'SIGNAL_DRIFT':
             box = layout.box()
-            box.label(text="Digital Apparition — Spectral Human", icon='USER')
-            box.label(text="Authentic Mesh: 1.80m Human Base", icon='CHECKMARK')
-            box.label(text="System: Poisson Dots + Z-Aligned Bars + Streaks", icon='NODETREE')
+            box.label(text="Digital Apparition — Spectral Face", icon='USER')
+            box.label(text="Target: Authentic Human Face / Bust (Zero Lag)", icon='CHECKMARK')
+            box.label(text="System: Micro Dots + Z-Aligned Scan Bars", icon='NODETREE')
             box.label(text="Shader: Violet (-X) to Cyan (+X) CRT Scan", icon='MATERIAL')
             box.label(text="Reactivity: Kick Radial Burst & Zoom Punch", icon='DRIVER')
         elif visual.preset == 'COSMIC_BLOSSOM':

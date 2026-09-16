@@ -18,19 +18,21 @@ def setup_drift_camera(
     orbit_height: float = 1.2,
     total_frames: int = 446,
     lens_mm: float = 35.0,
+    target_z: float = 0.0,
     collection: bpy.types.Collection = None,
 ) -> bpy.types.Object:
     """
     Create and animate the orbit camera for Signal Drift.
 
-    The camera orbits the origin (where the mannequin stands)
-    in a smooth 360° circle, always pointing at the figure center.
+    The camera orbits the origin (where the mannequin/face stands)
+    in a smooth 360° circle, always pointing at the target center.
 
     Args:
-        orbit_radius: Distance from figure center
+        orbit_radius: Distance from subject center
         orbit_height: Camera height (Z)
         total_frames: Total animation frames
         lens_mm: Focal length in mm
+        target_z: Target Z focus coordinate (0.0 for centered face)
         collection: Collection to link camera into
 
     Returns:
@@ -56,8 +58,8 @@ def setup_drift_camera(
         target = bpy.data.objects.new(target_name, None)
         bpy.context.scene.collection.objects.link(target)
 
-    # Target positioned at center of mannequin (approximately chest level)
-    target.location = (0, 0, 1.0)
+    # Target positioned at center of subject
+    target.location = (0, 0, target_z)
 
     # Track To constraint
     existing_track = None

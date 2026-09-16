@@ -20,25 +20,27 @@ import math
 from typing import Optional
 
 
-def get_human_asset_path() -> str:
-    """Return the absolute path to the bundled human_base.blend asset."""
-    # Current file is in blenderbeat/presets/signal_drift/
+def get_human_asset_path(head_only: bool = True) -> str:
+    """Return the absolute path to the bundled human asset blend."""
     current_dir = os.path.dirname(os.path.abspath(__file__))
     preset_dir = os.path.dirname(current_dir)
     blenderbeat_dir = os.path.dirname(preset_dir)
-    return os.path.join(blenderbeat_dir, "assets", "models", "human_base.blend")
+    filename = "human_head.blend" if head_only else "human_base.blend"
+    return os.path.join(blenderbeat_dir, "assets", "models", filename)
 
 
 def create_mannequin_mesh(
     name: str = "BB_SD_Mannequin",
     total_height: float = 1.80,
+    head_only: bool = True,
 ) -> bpy.types.Object:
     """
-    Import and prepare the authentic human mesh for Signal Drift.
+    Import and prepare the authentic human/face mesh for Signal Drift.
 
     Args:
         name: Object name for the human in the active scene
-        total_height: Target height in meters (default 1.80m standard human)
+        total_height: Target height in meters
+        head_only: If True, load only the head/face mesh for fast viewport performance
 
     Returns:
         bpy.types.Object: The human mesh object (hidden from render/viewport)
@@ -48,23 +50,28 @@ def create_mannequin_mesh(
     if existing:
         bpy.data.objects.remove(existing, do_unlink=True)
 
-    asset_path = get_human_asset_path()
+    asset_path = get_human_asset_path(head_only=head_only)
+    if not os.path.exists(asset_path):
+        # Fallback to human_base.blend if head blend not found
+        asset_path = get_human_asset_path(head_only=False)
+
     human_obj: Optional[bpy.types.Object] = None
 
     if os.path.exists(asset_path):
         try:
             with bpy.data.libraries.load(asset_path, link=False) as (data_from, data_to):
-                if "Human_Base_Full" in data_from.objects:
-                    data_to.objects = ["Human_Base_Full"]
+                target_names = ["Human_Head_Face", "Human_Base_Full"]
+                matched = [n for n in target_names if n in data_from.objects]
+                if matched:
+                    data_to.objects = [matched[0]]
                 elif data_from.objects:
-                    # Pick the first mesh object if named differently
                     data_to.objects = [data_from.objects[0]]
 
             if data_to.objects:
                 human_obj = data_to.objects[0]
                 bpy.context.collection.objects.link(human_obj)
                 human_obj.name = name
-                print(f"[BlenderBeat] Loaded human asset from {asset_path}")
+                print(f"[BlenderBeat] Loaded human asset from {asset_path} (head_only={head_only})")
         except Exception as e:
             print(f"[BlenderBeat] Failed to append human asset: {e}")
 
@@ -91,12 +98,21 @@ def create_mannequin_mesh(
             bpy.ops.object.transform_apply(scale=True)
             human_obj.select_set(False)
 
-        # Center X and Y at 0, align lowest point to Z=0
+        # Center X and Y at 0
         bb = human_obj.bound_box
         center_x = sum(v[0] for v in bb) / 8.0
         center_y = sum(v[1] for v in bb) / 8.0
         min_z = min(v[2] for v in bb)
-        human_obj.location = (-center_x, -center_y, -min_z)
+        max_z = max(v[2] for v in bb)
+        
+        if head_only:
+            # Center the face directly at (0, 0, 0)
+            center_z = sum(v[2] for v in bb) / 8.0
+            human_obj.location = (-center_x, -center_y, -center_z)
+        else:
+            # Full body standing with feet on ground plane Z=0
+            human_obj.location = (-center_x, -center_y, -min_z)
+
         bpy.context.view_layer.objects.active = human_obj
         human_obj.select_set(True)
         bpy.ops.object.transform_apply(location=True)
