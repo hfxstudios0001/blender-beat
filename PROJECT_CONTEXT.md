@@ -41,13 +41,19 @@ BLENDERBEAT PLUGIN/
 │       ├── base.py           # BasePreset abstract class & PresetRegistry
 │       ├── black_hole_tunnel/# Flagship Preset 1: Infinite Black Hole Tunnel
 │       ├── cosmic_blossom/   # Flagship Preset 2: Cosmic Blossom
-│       └── light_grid/       # Flagship Preset 3: Infinite Light Grid (Square LED Corridor)
-│           ├── preset.py     # InfiniteLightGridPreset definition & lifecycle
-│           ├── master_frame.py   # Procedural square LED frame mesh + chrome corner joints
-│           ├── grid_nodes.py     # Geometry Nodes corridor instancer, twist & traveling wave
-│           ├── grid_materials.py # Shader: per-pipe stochastic beat selection + Aura Sync SPECTRUM
-│           ├── grid_camera.py    # Wide 20mm camera flythrough with CCW Z-rotation
-│           └── grid_terminus.py  # Atmospheric horizon vanishing point glow
+│       ├── light_grid/       # Flagship Preset 3: Infinite Light Grid (Square LED Corridor)
+│       │   ├── preset.py     # InfiniteLightGridPreset definition & lifecycle
+│       │   ├── master_frame.py   # Procedural square LED frame mesh + chrome corner joints
+│       │   ├── grid_nodes.py     # Geometry Nodes corridor instancer, twist & traveling wave
+│       │   ├── grid_materials.py # Shader: per-pipe stochastic beat selection + Aura Sync SPECTRUM
+│       │   ├── grid_camera.py    # Wide 20mm camera flythrough with CCW Z-rotation
+│       │   └── grid_terminus.py  # Atmospheric horizon vanishing point glow
+│       └── signal_drift/    # Flagship Preset 4: Signal Drift (Digital Apparition)
+│           ├── preset.py         # SignalDriftPreset definition & lifecycle
+│           ├── mannequin.py      # Authentic human mesh asset loader (Human_Base_Full)
+│           ├── drift_nodes.py    # Self-contained multi-scale GN (Poisson dots, Z-aligned bars, radial streaks)
+│           ├── drift_materials.py # Dual-tone Violet-Cyan shader + CRT scan-lines + white-hot kick
+│           └── drift_camera.py   # 360° orbit camera with zoom punch
 ```
 
 ---
@@ -103,6 +109,7 @@ Preset choices in UI dropdowns (`blenderbeat/properties.py`) dynamically list al
 | `INFINITE_BLACK_HOLE` | **Infinite Black Hole Tunnel** | 55 dark cylindrical hulls, 8 chrome girder rails, zero-albedo event horizon | Z-traveling shockwave wave, random white-hot accent flare, kick zoom punch |
 | `COSMIC_BLOSSOM` | **Cosmic Blossom** | Tiered sacred geometry lotus petals, stamen cluster, golden spiral distribution | Bass petal expansion, mid twist, transient petal flutter |
 | `INFINITE_LIGHT_GRID` | **Infinite Light Grid** | Deep square-framed LED corridor with chrome corner joints & atmospheric terminus | **Per-pipe stochastic beat ignition** (1, 2, 3, or all 4 pipes ignite randomly on kick/beat), occasional full-frame burst, CCW rotating 20mm camera flythrough |
+| `SIGNAL_DRIFT` | **Signal Drift** | Spectral humanoid apparition preserving authentic anatomical human silhouette, sampled with Poisson disk distribution into micro dot matrix, Z-aligned delicate scan bars, and audio-reactive radial streaks | Bass breathing, kick explosive radial burst + instant reconstruction, CRT scan lines, dual-tone violet-cyan spectrum, 360° orbit camera |
 
 ---
 
