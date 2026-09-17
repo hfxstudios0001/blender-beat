@@ -178,11 +178,23 @@ def configure_eevee_rendering():
         # Blender 4.x may handle bloom differently (compositor)
         pass
 
-    # Screen space reflections
+    # Screen space reflections / Raytracing (Blender 4.x & 5.x EEVEE-Next)
     try:
         eevee.use_ssr = True
         eevee.use_ssr_refraction = True
     except AttributeError:
+        pass
+
+    try:
+        eevee.use_raytracing = True
+        eevee.ray_tracing_method = 'SCREEN'
+        if hasattr(eevee, "ray_tracing_options"):
+            rto = eevee.ray_tracing_options
+            rto.screen_trace_quality = 0.5
+            rto.screen_trace_thickness = 0.25
+            rto.trace_max_roughness = 0.75
+            rto.use_denoise = True
+    except (AttributeError, TypeError):
         pass
 
     # Ambient occlusion

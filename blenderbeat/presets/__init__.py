@@ -9,11 +9,13 @@ from .registry import PresetRegistry
 from .black_hole_tunnel import InfiniteBlackHoleTunnelPreset
 from .cosmic_blossom import CosmicBlossomPreset
 from .light_grid import InfiniteLightGridPreset
+from .neon_city import NeonSignalCityPreset
 
 # Register presets
 PresetRegistry.register(InfiniteBlackHoleTunnelPreset)
 PresetRegistry.register(CosmicBlossomPreset)
 PresetRegistry.register(InfiniteLightGridPreset)
+PresetRegistry.register(NeonSignalCityPreset)
 
 __all__ = [
     "BasePreset",
@@ -21,4 +23,5 @@ __all__ = [
     "InfiniteBlackHoleTunnelPreset",
     "CosmicBlossomPreset",
     "InfiniteLightGridPreset",
+    "NeonSignalCityPreset",
 ]

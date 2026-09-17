@@ -12,4 +12,9 @@ Whenever this project is opened or resumed in a new session/agent, read `PROJECT
      - **Per-pipe stochastic beat reactivity**: Each square frame has 4 pipes. Transients and kicks trigger stochastic subsets (1, 2, 3, or all 4 pipes ignite) or occasional full-frame bursts.
      - **Counter-Clockwise (CCW) Camera Roll**: Continuous 360° rotation around Z-axis while traveling forward.
      - **Aura Sync SPECTRUM**: Multi-layer chromatic gradient with real-time EEVEE-Next Compositor Fog Glow bloom (`space.shading.use_compositor = 'ALWAYS'`).
+  4. `NEON_SIGNAL_CITY`: Futuristic cyberpunk skyscraper corridor with:
+     - **Zero Camera Shake**: Stable cinematic eye-level camera looking down the corridor.
+     - **Vertical LED Columns**: Hundreds of vertical light strips with dark housings and emissive cores.
+     - **Kick Depth Propagation**: Lighting wave travels from foreground to deep vanishing point along Y axis.
+     - **Wet Reflective Street**: Concrete/asphalt ground with puddle variation reflecting the illuminated city.
 - **Engine Rules**: Blender 5.2 uses Compositor Fog Glow (`CompositorNodeGlare`) instead of legacy bloom.

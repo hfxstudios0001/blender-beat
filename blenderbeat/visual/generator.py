@@ -141,6 +141,10 @@ def generate_visualizer(
                 "grid_frame_count": getattr(bb_vis, "grid_frame_count", 35),
                 "grid_frame_size": getattr(bb_vis, "grid_frame_size", 3.0),
                 "grid_twist_amount": getattr(bb_vis, "grid_twist_amount", 0.05),
+                # Neon Signal City Settings
+                "corridor_length": 160.0,
+                "corridor_width": 14.0,
+                "camera_audio_reactivity": 0.0,
             }
             preset_objects = modular_preset.create(bpy.context, analysis, preset_settings)
             

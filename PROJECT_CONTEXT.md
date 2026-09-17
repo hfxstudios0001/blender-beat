@@ -109,6 +109,7 @@ Preset choices in UI dropdowns (`blenderbeat/properties.py`) dynamically list al
 | `INFINITE_BLACK_HOLE` | **Infinite Black Hole Tunnel** | 55 dark cylindrical hulls, 8 chrome girder rails, zero-albedo event horizon | Z-traveling shockwave wave, random white-hot accent flare, kick zoom punch |
 | `COSMIC_BLOSSOM` | **Cosmic Blossom** | Tiered sacred geometry lotus petals, stamen cluster, golden spiral distribution | Bass petal expansion, mid twist, transient petal flutter |
 | `INFINITE_LIGHT_GRID` | **Infinite Light Grid** | Deep square-framed LED corridor with chrome corner joints & atmospheric terminus | **Per-pipe stochastic beat ignition** (1, 2, 3, or all 4 pipes ignite randomly on kick/beat), occasional full-frame burst, CCW rotating 20mm camera flythrough |
+| `NEON_SIGNAL_CITY` | **Neon Signal City** | Futuristic cyberpunk skyscraper corridor with vertical light strips, wet reflective street, depth wave propagation, and stable cinematic camera | Traveling kick wave down Y corridor, bass ambient breathing, zero camera shake, cyan/teal & magenta palette |
 
 ---
 

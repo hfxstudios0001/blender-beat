@@ -113,7 +113,14 @@ class BB_PT_VisualPanel(bpy.types.Panel):
         layout.separator()
 
         # Preset-specific controls
-        if visual.preset == 'COSMIC_BLOSSOM':
+        if visual.preset == 'NEON_SIGNAL_CITY':
+            box = layout.box()
+            box.label(text="Futuristic Cyberpunk Corridor", icon='SCENE_DATA')
+            box.label(text="Architecture: Procedural Skyscrapers & Pillars", icon='MESH_CUBE')
+            box.label(text="Lighting: Vertical LED Strips + Wave Propagation", icon='LIGHT_SUN')
+            box.label(text="Ground: Wet Asphalt with Puddle Reflections", icon='MATFLUID')
+            box.label(text="Camera: Stable Cinematic Eye-Level (Zero Shake)", icon='CAMERA_DATA')
+        elif visual.preset == 'COSMIC_BLOSSOM':
             box = layout.box()
             box.label(text="Hero Flower Architecture", icon='OUTLINER_OB_CURVES')
             box.prop(visual, "blossom_color_palette", text="Theme")
