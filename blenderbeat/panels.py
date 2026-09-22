@@ -112,8 +112,26 @@ class BB_PT_VisualPanel(bpy.types.Panel):
 
         layout.separator()
 
-        # Preset-specific controls
-        if visual.preset == 'NEON_SIGNAL_CITY':
+        if visual.preset == 'PULSE_TUNNEL':
+            box_col = layout.box()
+            box_col.label(text="Pulse Tunnel Color & Theme", icon='COLOR')
+            box_col.prop(visual, "pt_color_palette", text="Theme")
+            if visual.pt_color_palette == 'CUSTOM_DUAL':
+                box_col.prop(visual, "pt_custom_primary", text="Primary Spokes")
+                box_col.prop(visual, "pt_custom_secondary", text="Accent Rays")
+
+            box_glow = layout.box()
+            box_glow.label(text="Glow & Bloom Controls", icon='LIGHT_SUN')
+            box_glow.prop(visual, "pt_glow_intensity", text="Peak Brightness")
+            box_glow.prop(visual, "pt_resting_glow", text="Resting Glow")
+            box_glow.prop(visual, "pt_bloom_threshold", text="Bloom Threshold")
+            box_glow.prop(visual, "pt_bloom_size", text="Bloom Spread", slider=True)
+
+            box_geo = layout.box()
+            box_geo.label(text="Tunnel Architecture", icon='MESH_CYLINDER')
+            box_geo.prop(visual, "pt_tunnel_rings", text="Rings")
+            box_geo.prop(visual, "pt_tunnel_radius", text="Radius")
+        elif visual.preset == 'NEON_SIGNAL_CITY':
             box = layout.box()
             box.label(text="Futuristic Cyberpunk Corridor", icon='SCENE_DATA')
             box.label(text="Architecture: Procedural Skyscrapers & Pillars", icon='MESH_CUBE')

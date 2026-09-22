@@ -145,6 +145,16 @@ def generate_visualizer(
                 "corridor_length": 160.0,
                 "corridor_width": 14.0,
                 "camera_audio_reactivity": 0.0,
+                # Pulse Tunnel Settings
+                "pt_tunnel_rings": getattr(bb_vis, "pt_tunnel_rings", 80),
+                "pt_tunnel_radius": getattr(bb_vis, "pt_tunnel_radius", 8.0),
+                "pt_color_palette": getattr(bb_vis, "pt_color_palette", 'CYBER_CYAN_MAGENTA'),
+                "pt_custom_primary": tuple(getattr(bb_vis, "pt_custom_primary", (0.0, 0.9, 1.0))),
+                "pt_custom_secondary": tuple(getattr(bb_vis, "pt_custom_secondary", (1.0, 0.02, 0.8))),
+                "pt_glow_intensity": getattr(bb_vis, "pt_glow_intensity", 35.0),
+                "pt_resting_glow": getattr(bb_vis, "pt_resting_glow", 0.0),
+                "pt_bloom_threshold": getattr(bb_vis, "pt_bloom_threshold", 0.65),
+                "pt_bloom_size": getattr(bb_vis, "pt_bloom_size", 0.95),
             }
             preset_objects = modular_preset.create(bpy.context, analysis, preset_settings)
             

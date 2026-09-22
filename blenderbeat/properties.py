@@ -91,6 +91,7 @@ class BB_VisualProperties(bpy.types.PropertyGroup):
         description="Visual preset to use",
         items=[
             ('NEON_SIGNAL_CITY', "Neon Signal City", "Futuristic cyberpunk skyscraper corridor with vertical LED light columns, wet reflective ground, and kick depth wave propagation"),
+            ('PULSE_TUNNEL', "Pulse Tunnel", "Futuristic circular LED tunnel with concentric rings, traveling illumination wave, and stochastic per-segment ON/OFF"),
             ('COSMIC_BLOSSOM', "Cosmic Blossom", "Multilayered alien cosmic flower organism with energy wave propagation and reflective temple environment"),
             ('INFINITE_BLACK_HOLE_TUNNEL', "Infinite Black Hole Tunnel", "Gigantic mechanical corridor with amber LED pulse rings leading to a black hole"),
             ('INFINITE_LIGHT_GRID', "Infinite Light Grid", "Deep square-framed LED tunnel with mechanical joints and audio-reactive light propagation"),
@@ -256,6 +257,91 @@ class BB_VisualProperties(bpy.types.PropertyGroup):
         name="Mirror Platform",
         description="Enable reflective temple water/obsidian platform below blossom",
         default=True,
+    )
+
+    # ── Pulse Tunnel Parameters ─────────────────────────────────────────
+    pt_color_palette: EnumProperty(
+        name="Color Palette",
+        description="Color theme for Pulse Tunnel radial spokes and accents",
+        items=[
+            ('CYBER_CYAN_MAGENTA', "Cyberpunk Cyan & Magenta", "Classic video look: Electric cyan inner/outer spokes + Hot magenta starburst & diamonds"),
+            ('NEON_TRON_CYAN', "Electric Cyan & Ice Blue", "Monochromatic high-tech Tron cyber blue"),
+            ('SYNTHWAVE_SUNSET', "Synthwave Sunset", "Hot neon magenta spokes + golden solar orange starburst"),
+            ('TOXIC_MATRIX', "Matrix Toxic Green", "Cyber emerald green spokes + acid lime starburst"),
+            ('SOLAR_INFERNO', "Solar Flare Inferno", "Fiery crimson red spokes + radiant solar amber starburst"),
+            ('ARCTIC_WHITE', "Arctic Diamond & Blue", "Ultra-bright diamond white spokes + sapphire blue starburst"),
+            ('CUSTOM_DUAL', "Custom Dual-Tone", "User-defined Primary & Secondary accent colors"),
+        ],
+        default='CYBER_CYAN_MAGENTA',
+    )
+
+    pt_custom_primary: FloatVectorProperty(
+        name="Primary Color",
+        description="Color for inner tick ring, outer spoke bars, and hero glow ring",
+        subtype='COLOR',
+        size=3,
+        min=0.0,
+        max=1.0,
+        default=(0.0, 0.9, 1.0),
+    )
+
+    pt_custom_secondary: FloatVectorProperty(
+        name="Secondary / Accent Color",
+        description="Color for mid star-burst spokes and perimeter diamonds",
+        subtype='COLOR',
+        size=3,
+        min=0.0,
+        max=1.0,
+        default=(1.0, 0.02, 0.8),
+    )
+
+    pt_glow_intensity: FloatProperty(
+        name="Glow Multiplier",
+        description="Overall peak brightness multiplier for LED emissions",
+        default=35.0,
+        min=5.0,
+        max=120.0,
+    )
+
+    pt_resting_glow: FloatProperty(
+        name="Resting Glow",
+        description="Base resting emission brightness when quiet (0 = completely dark)",
+        default=0.0,
+        min=0.0,
+        max=10.0,
+    )
+
+    pt_bloom_threshold: FloatProperty(
+        name="Bloom Threshold",
+        description="Compositor Fog Glow threshold (lower = softer bloom, higher = only peak highlights bloom)",
+        default=0.65,
+        min=0.1,
+        max=2.0,
+    )
+
+    pt_bloom_size: FloatProperty(
+        name="Bloom Size",
+        description="Compositor Fog Glow bloom spread/radius",
+        default=0.95,
+        min=0.1,
+        max=1.0,
+        subtype='FACTOR',
+    )
+
+    pt_tunnel_rings: IntProperty(
+        name="Tunnel Rings",
+        description="Number of concentric corridor rings",
+        default=80,
+        min=20,
+        max=150,
+    )
+
+    pt_tunnel_radius: FloatProperty(
+        name="Tunnel Radius",
+        description="Outer radius of the tunnel disk (reference video = 8.0)",
+        default=8.0,
+        min=3.0,
+        max=15.0,
     )
 
     # ── Infinite Light Grid Parameters ──────────────────────────────────

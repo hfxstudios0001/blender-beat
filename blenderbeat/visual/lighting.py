@@ -236,7 +236,13 @@ def configure_eevee_rendering():
         pass
 
 
-def setup_realtime_glow_compositor():
+def setup_realtime_glow_compositor(
+    threshold: float = 0.65,
+    size: float = 0.95,
+    strength: float = 0.7,
+    saturation: float = 1.2,
+    tint: tuple = (1.0, 1.0, 1.0, 1.0),
+):
     """
     Configure real-time Fog Glow bloom in the Blender 5.2 Compositor.
     Creates a CompositorNodeTree assigned to scene.compositing_node_group
@@ -244,7 +250,7 @@ def setup_realtime_glow_compositor():
     """
     scene = bpy.context.scene
 
-    # Blender 5.2 Compositor Node Tree
+    # Blender 5.2 Compositor Node Tree (Node Group assigned to scene.compositing_node_group)
     c_tree = bpy.data.node_groups.get("BB_CompositorNodes")
     if not c_tree:
         c_tree = bpy.data.node_groups.new(name="BB_CompositorNodes", type="CompositorNodeTree")
@@ -272,15 +278,15 @@ def setup_realtime_glow_compositor():
         pass
 
     if "Threshold" in glare.inputs:
-        glare.inputs["Threshold"].default_value = 0.65
+        glare.inputs["Threshold"].default_value = threshold
     if "Saturation" in glare.inputs:
-        glare.inputs["Saturation"].default_value = 1.2
+        glare.inputs["Saturation"].default_value = saturation
     if "Strength" in glare.inputs:
-        glare.inputs["Strength"].default_value = 0.7
+        glare.inputs["Strength"].default_value = strength
     if "Size" in glare.inputs:
-        glare.inputs["Size"].default_value = 0.95
+        glare.inputs["Size"].default_value = size
     if "Tint" in glare.inputs:
-        glare.inputs["Tint"].default_value = (1.0, 1.0, 1.0, 1.0)  # Neutral tint for multi-color Aura Sync
+        glare.inputs["Tint"].default_value = tint
 
     out_node = c_tree.nodes.new("NodeGroupOutput")
     out_node.location = (300, 200)

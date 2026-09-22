@@ -48,12 +48,19 @@ BLENDERBEAT PLUGIN/
 │       │   ├── grid_materials.py # Shader: per-pipe stochastic beat selection + Aura Sync SPECTRUM
 │       │   ├── grid_camera.py    # Wide 20mm camera flythrough with CCW Z-rotation
 │       │   └── grid_terminus.py  # Atmospheric horizon vanishing point glow
-│       └── signal_drift/    # Flagship Preset 4: Signal Drift (Digital Apparition)
-│           ├── preset.py         # SignalDriftPreset definition & lifecycle
-│           ├── mannequin.py      # Authentic human mesh asset loader (Human_Base_Full)
-│           ├── drift_nodes.py    # Self-contained multi-scale GN (Poisson dots, Z-aligned bars, radial streaks)
-│           ├── drift_materials.py # Dual-tone Violet-Cyan shader + CRT scan-lines + white-hot kick
-│           └── drift_camera.py   # 360° orbit camera with zoom punch
+│       ├── signal_drift/    # Flagship Preset 4: Signal Drift (Digital Apparition)
+│       │   ├── preset.py         # SignalDriftPreset definition & lifecycle
+│       │   ├── mannequin.py      # Authentic human mesh asset loader (Human_Base_Full)
+│       │   ├── drift_nodes.py    # Self-contained multi-scale GN (Poisson dots, Z-aligned bars, radial streaks)
+│       │   ├── drift_materials.py # Dual-tone Violet-Cyan shader + CRT scan-lines + white-hot kick
+│       │   └── drift_camera.py   # 360° orbit camera with zoom punch
+│       └── pulse_tunnel/    # Flagship Preset 5: Pulse Tunnel (Audio-Reactive LED Tunnel)
+│           ├── preset.py         # PulseTunnelPreset definition & lifecycle
+│           ├── tunnel_ring.py    # Master ring mesh (32-segment LED bar + chrome hull)
+│           ├── tunnel_nodes.py   # Geometry Nodes instancer (80 rings × 2m spacing)
+│           ├── tunnel_materials.py # Dual-tone Cyan↔Magenta LED shader + traveling wave + stochastic ON/OFF
+│           ├── tunnel_camera.py  # Constant-speed forward camera (ZERO audio reactivity)
+│           └── tunnel_lighting.py # Volumetric haze + terminus glow + Fog Glow bloom
 ```
 
 ---
@@ -110,6 +117,7 @@ Preset choices in UI dropdowns (`blenderbeat/properties.py`) dynamically list al
 | `COSMIC_BLOSSOM` | **Cosmic Blossom** | Tiered sacred geometry lotus petals, stamen cluster, golden spiral distribution | Bass petal expansion, mid twist, transient petal flutter |
 | `INFINITE_LIGHT_GRID` | **Infinite Light Grid** | Deep square-framed LED corridor with chrome corner joints & atmospheric terminus | **Per-pipe stochastic beat ignition** (1, 2, 3, or all 4 pipes ignite randomly on kick/beat), occasional full-frame burst, CCW rotating 20mm camera flythrough |
 | `NEON_SIGNAL_CITY` | **Neon Signal City** | Futuristic cyberpunk skyscraper corridor with vertical light strips, wet reflective street, depth wave propagation, and stable cinematic camera | Traveling kick wave down Y corridor, bass ambient breathing, zero camera shake, cyan/teal & magenta palette |
+| `PULSE_TUNNEL` | **Pulse Tunnel** | Futuristic circular LED tunnel with concentric 32-segment rings, stochastic per-segment ON/OFF, and constant-speed forward camera | **Traveling illumination wave** on kick, per-segment hash gate, dual-tone Cyan↔Magenta gradient, white-hot transient peaks, ZERO camera reactivity |
 
 ---
 

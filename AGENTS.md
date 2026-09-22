@@ -17,4 +17,10 @@ Whenever this project is opened or resumed in a new session/agent, read `PROJECT
      - **Vertical LED Columns**: Hundreds of vertical light strips with dark housings and emissive cores.
      - **Kick Depth Propagation**: Lighting wave travels from foreground to deep vanishing point along Y axis.
      - **Wet Reflective Street**: Concrete/asphalt ground with puddle variation reflecting the illuminated city.
+  5. `PULSE_TUNNEL`: Futuristic circular LED tunnel with:
+     - **Zero Camera Reactivity**: Constant-speed forward camera, NO shake/zoom/kick/pulse.
+     - **Concentric Rings**: 80 rings × 32 LED segments each, instanced via Geometry Nodes.
+     - **Traveling Illumination Wave**: Beat-driven shockwave races through the tunnel on each kick.
+     - **Per-Segment Stochastic ON/OFF**: Hash-based probability gate determines which segments ignite per beat.
+     - **Dual-Tone Gradient**: Cyan ↔ Magenta with white-hot transient peaks.
 - **Engine Rules**: Blender 5.2 uses Compositor Fog Glow (`CompositorNodeGlare`) instead of legacy bloom.

@@ -194,6 +194,7 @@ class BB_OT_GenerateVisual(bpy.types.Operator):
         # Map preset enum to name
         preset_map = {
             'NEON_SIGNAL_CITY': "Neon Signal City",
+            'PULSE_TUNNEL': "Pulse Tunnel",
             'COSMIC_BLOSSOM': "Cosmic Blossom",
             'INFINITE_BLACK_HOLE_TUNNEL': "Infinite Black Hole Tunnel",
             'INFINITE_LIGHT_GRID': "Infinite Light Grid",
